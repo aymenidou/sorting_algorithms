@@ -4,29 +4,26 @@
  * bubble_sort - sort an array using bubble sort
  * @array: array to be sorted
  * @size: array size
-*/
+ */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i, j;
+	size_t i, j, tmp;
 
-	if (size <= 1)
+	if (!array || size <= 1)
 	{
-		print_array(array, size);
 		return;
 	}
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
-		for (j = i + 1; j < size; j++)
+		for (j = 0; j < size - 1; j++)
 		{
-			if (array[i] > array[j])
+			if (array[j] > array[j + 1])
 			{
-				array[i] += array[j];
-				array[j] = array[i] - array[j];
-				array[i] = array[i] - array[j];
+				tmp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = tmp;
+				print_array(array, size);
 			}
-			print_array(array, size);
 		}
-
 	}
-
 }
